@@ -44,6 +44,42 @@ const oM = [
       liveview: "https://schoolwebsite13.vercel.app/",
       alt: "School Website",
     },
+    {
+      id: 5,
+      name: "Split App",
+      description: "An expense sharing application to easily split bills, track shared expenses, and manage group balances.",
+      image: "images/projects/projecthub.png",
+      tags: ["react", "javascript", "express", "mongodb"],
+      liveview: "https://sathwiksplitfrontend.onrender.com/",
+      alt: "Split App",
+    },
+    {
+      id: 6,
+      name: "Doctor Appointment Website",
+      description: "A healthcare management platform for booking doctor appointments, managing schedules, and patient records.",
+      image: "images/projects/guru-drishti.jpg",
+      tags: ["react", "javascript", "express", "mongodb"],
+      liveview: "https://hospitalmanagement-frontend-m8q0.onrender.com",
+      alt: "Doctor Appointment Website",
+    },
+    {
+      id: 7,
+      name: "Kusuma Beauty Parlour",
+      description: "A stylish salon & beauty parlour website showcasing services, makeup portfolios, and booking contacts.",
+      image: "images/projects/marketing-agency.png",
+      tags: ["html", "css", "javascript"],
+      liveview: "https://sathwik-0701.github.io/kusumamakeup/",
+      alt: "Kusuma Beauty Parlour",
+    },
+    {
+      id: 8,
+      name: "Spicy Kitchen Restaurant",
+      description: "A food ordering & restaurant website featuring interactive menus, special dishes, and online reservations.",
+      image: "images/projects/coffee.jpg",
+      tags: ["react", "javascript", "css"],
+      liveview: "https://spicykitchen-k63a.vercel.app/",
+      alt: "Spicy Kitchen Restaurant",
+    },
   ];
   
   class lM {
