@@ -37484,17 +37484,6 @@ class sM {
 }
 class rM {
   constructor() {
-    he(this, "positionStyles", [
-      "transform: translateX(-410%) scale(0.9);",
-      "transform: translateX(-310%) scale(0.9); ",
-      "transform: translateX(-210%) scale(0.9);",
-      "transform: translateX(-110%) scale(0.9); ",
-      "transform: translateX(0%);",
-      "transform: translateX(110%) scale(0.9);",
-      "transform: translateX(210%) scale(0.9)",
-      "transform: translateX(310%) scale(0.9);",
-      "transform: translateX(410%) scale(0.9);",
-    ]);
     he(this, "domElements", {
       section: document.getElementById("work-section"),
       backButton: document.getElementById("work-back-button"),
@@ -37553,7 +37542,7 @@ class rM {
       (e == "right" ? this.moveForward() : this.moveBack());
   }
   moveBack() {
-    this.currentItemIndex != 4 &&
+    this.currentItemIndex < 4 &&
       !this.itemsAreMoving &&
       document
         .getElementById("work-item-0")
@@ -37561,7 +37550,8 @@ class rM {
       (this.currentItemIndex++, this.updatePositions());
   }
   moveForward() {
-    this.currentItemIndex != 0 &&
+    const minIndex = 5 - (this.render.items ? this.render.items.length : 5);
+    this.currentItemIndex > minIndex &&
       !this.itemsAreMoving &&
       document
         .getElementById("work-item-0")
@@ -37580,27 +37570,30 @@ class rM {
     (!this.itemsAreMoving || e) &&
       (this.render.items.forEach((t) => {
         const n = this.render.items.indexOf(t);
-        (document.getElementById("work-item-" + t.id).style =
-          this.positionStyles[n + this.currentItemIndex]),
-          n + this.currentItemIndex != 4
-            ? document
-                .getElementById("work-item-" + t.id)
-                .classList.add("work-inactive-item-container")
-            : document
-                .getElementById("work-item-" + t.id)
-                .classList.remove("work-inactive-item-container");
+        const offset = n + this.currentItemIndex - 4;
+        const itemEl = document.getElementById("work-item-" + t.id);
+        if (itemEl) {
+          if (offset === 0) {
+            itemEl.style.transform = "translateX(0%)";
+            itemEl.classList.remove("work-inactive-item-container");
+          } else {
+            itemEl.style.transform = "translateX(" + (offset * 110) + "%) scale(0.9)";
+            itemEl.classList.add("work-inactive-item-container");
+          }
+        }
       }),
       (this.itemsAreMoving = !0),
       P.delayedCall(0.5, () => (this.itemsAreMoving = !1)),
       this.updateNavigation());
   }
   updateNavigation() {
-    this.currentItemIndex == 0
+    const minIndex = 5 - (this.render.items ? this.render.items.length : 5);
+    this.currentItemIndex <= minIndex
       ? (this.domElements.nextButton.classList.add(
           "work-disabled-navigation-button"
         ),
         this.experience.ui.hoverIcon.setupDefault())
-      : this.currentItemIndex == 4
+      : this.currentItemIndex >= 4
       ? (this.domElements.backButton.classList.add(
           "work-disabled-navigation-button"
         ),
@@ -37659,7 +37652,7 @@ const oM = [
       liveview: "https://schoolwebsite13.vercel.app/",
       alt: "School Website",
     },
-	    {
+    {
       id: 5,
       name: "Split App",
       description: "An expense sharing application to easily split bills, track shared expenses, and manage group balances.",
@@ -37695,8 +37688,8 @@ const oM = [
       liveview: "https://spicykitchen-k63a.vercel.app/",
       alt: "Spicy Kitchen Restaurant",
     },
-  ],
-  aM = {
+  ];
+aM = {
     html: '<div class="work-item-tag" style="background: white; border: 1px solid #7C8594; color: #7C8594">HTML</div>',
     css: '<div class="work-item-tag" style="background: white; border: 1px solid #7C8594; color: #7C8594">CSS</div>',
     javascript:
