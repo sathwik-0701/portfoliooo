@@ -37643,15 +37643,6 @@ const oM = [
     },
     {
       id: 3,
-      name: "Spotify",
-      description: "A sleek music streaming platform clone with play, pause, and library management.",
-      image: "images/projects/spotify.png",
-      tags: ["javascript", "html", "css"],
-      liveview: "https://spotify-beta-ashy.vercel.app/",
-      alt: "Spotify",
-    },
-    {
-      id: 4,
       name: "Split App",
       description: "An expense sharing application to easily split bills, track shared expenses, and manage group balances.",
       image: "images/projects/projecthub.png",
@@ -37660,7 +37651,7 @@ const oM = [
       alt: "Split App",
     },
     {
-      id: 5,
+      id: 4,
       name: "Doctor Appointment Website",
       description: "A healthcare management platform for booking doctor appointments, managing schedules, and patient records.",
       image: "images/projects/guru-drishti.jpg",
