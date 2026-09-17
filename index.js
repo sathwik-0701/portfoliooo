@@ -37484,6 +37484,17 @@ class sM {
 }
 class rM {
   constructor() {
+    he(this, "positionStyles", [
+      "transform: translateX(-410%) scale(0.9);",
+      "transform: translateX(-310%) scale(0.9); ",
+      "transform: translateX(-210%) scale(0.9);",
+      "transform: translateX(-110%) scale(0.9); ",
+      "transform: translateX(0%);",
+      "transform: translateX(110%) scale(0.9);",
+      "transform: translateX(210%) scale(0.9)",
+      "transform: translateX(310%) scale(0.9);",
+      "transform: translateX(410%) scale(0.9);",
+    ]);
     he(this, "domElements", {
       section: document.getElementById("work-section"),
       backButton: document.getElementById("work-back-button"),
@@ -37542,7 +37553,7 @@ class rM {
       (e == "right" ? this.moveForward() : this.moveBack());
   }
   moveBack() {
-    this.currentItemIndex < 4 &&
+    this.currentItemIndex != 4 &&
       !this.itemsAreMoving &&
       document
         .getElementById("work-item-0")
@@ -37550,8 +37561,7 @@ class rM {
       (this.currentItemIndex++, this.updatePositions());
   }
   moveForward() {
-    const minIndex = 5 - (this.render.items ? this.render.items.length : 5);
-    this.currentItemIndex > minIndex &&
+    this.currentItemIndex != 0 &&
       !this.itemsAreMoving &&
       document
         .getElementById("work-item-0")
@@ -37570,30 +37580,27 @@ class rM {
     (!this.itemsAreMoving || e) &&
       (this.render.items.forEach((t) => {
         const n = this.render.items.indexOf(t);
-        const offset = n + this.currentItemIndex - 4;
-        const itemEl = document.getElementById("work-item-" + t.id);
-        if (itemEl) {
-          if (offset === 0) {
-            itemEl.style.transform = "translateX(0%)";
-            itemEl.classList.remove("work-inactive-item-container");
-          } else {
-            itemEl.style.transform = "translateX(" + (offset * 110) + "%) scale(0.9)";
-            itemEl.classList.add("work-inactive-item-container");
-          }
-        }
+        (document.getElementById("work-item-" + t.id).style =
+          this.positionStyles[n + this.currentItemIndex]),
+          n + this.currentItemIndex != 4
+            ? document
+                .getElementById("work-item-" + t.id)
+                .classList.add("work-inactive-item-container")
+            : document
+                .getElementById("work-item-" + t.id)
+                .classList.remove("work-inactive-item-container");
       }),
       (this.itemsAreMoving = !0),
       P.delayedCall(0.5, () => (this.itemsAreMoving = !1)),
       this.updateNavigation());
   }
   updateNavigation() {
-    const minIndex = 5 - (this.render.items ? this.render.items.length : 5);
-    this.currentItemIndex <= minIndex
+    this.currentItemIndex == 0
       ? (this.domElements.nextButton.classList.add(
           "work-disabled-navigation-button"
         ),
         this.experience.ui.hoverIcon.setupDefault())
-      : this.currentItemIndex >= 4
+      : this.currentItemIndex == 4
       ? (this.domElements.backButton.classList.add(
           "work-disabled-navigation-button"
         ),
@@ -37655,26 +37662,26 @@ const oM = [
     {
       id: 5,
       name: "Split App",
-      description: "An expense sharing application to easily split bills, track shared expenses, and manage group balances.",
-      image: "images/projects/projecthub.png",
-      tags: ["react", "javascript", "express", "mongodb"],
+      description: "An expense-splitting app for tracking shared costs and settling up with friends or groups.",
+      image: "images/projects/splitapp.png",
+      tags: ["react", "mongodb", "express"],
       liveview: "https://sathwiksplitfrontend.onrender.com/",
       alt: "Split App",
     },
     {
       id: 6,
       name: "Doctor Appointment Website",
-      description: "A healthcare management platform for booking doctor appointments, managing schedules, and patient records.",
-      image: "images/projects/guru-drishti.jpg",
-      tags: ["react", "javascript", "express", "mongodb"],
-      liveview: "https://hospitalmanagement-frontend-m8q0.onrender.com",
+      description: "A hospital management platform for booking, managing, and tracking doctor appointments.",
+      image: "images/projects/doctorappointment.png",
+      tags: ["react", "mongodb", "express"],
+      liveview: "https://hospitalmanagement-frontend-m8q0.onrender.com/",
       alt: "Doctor Appointment Website",
     },
     {
       id: 7,
       name: "Kusuma Beauty Parlour",
-      description: "A stylish salon & beauty parlour website showcasing services, makeup portfolios, and booking contacts.",
-      image: "images/projects/marketing-agency.png",
+      description: "A beauty parlour website showcasing services, styles, and bookings.",
+      image: "images/projects/kusumamakeup.png",
       tags: ["html", "css", "javascript"],
       liveview: "https://sathwik-0701.github.io/kusumamakeup/",
       alt: "Kusuma Beauty Parlour",
@@ -37682,14 +37689,14 @@ const oM = [
     {
       id: 8,
       name: "Spicy Kitchen Restaurant",
-      description: "A food ordering & restaurant website featuring interactive menus, special dishes, and online reservations.",
-      image: "images/projects/coffee.jpg",
-      tags: ["react", "javascript", "css"],
+      description: "A restaurant website featuring the menu, ambience, and online ordering experience.",
+      image: "images/projects/spicykitchen.png",
+      tags: ["react", "tailwind"],
       liveview: "https://spicykitchen-k63a.vercel.app/",
       alt: "Spicy Kitchen Restaurant",
     },
-  ];
-aM = {
+  ],
+  aM = {
     html: '<div class="work-item-tag" style="background: white; border: 1px solid #7C8594; color: #7C8594">HTML</div>',
     css: '<div class="work-item-tag" style="background: white; border: 1px solid #7C8594; color: #7C8594">CSS</div>',
     javascript:
